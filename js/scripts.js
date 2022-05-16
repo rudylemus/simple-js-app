@@ -8,9 +8,10 @@ let pokemonList = [
 //loop to display all pokemon with their heights
 for (let i = 0; i < pokemonList.length; i++)
 {
-  document.write(pokemonList[i].name + " " + pokemonList[i].height + " ");
-}
+document.write(pokemonList[i].name + " (height:" + pokemonList[i].height + ") ");
 
-  if (pokemonList.height > 2.0) {
-    document.write('Wow that\'s big!');
+   if (pokemonList[i].height > 2.0) {
+document.write('Wow that\'s big! ');
   }
+
+}
