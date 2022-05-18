@@ -19,11 +19,9 @@ return {
 })();
 
 // internal anonymous function to loop list
-pokemonRepository.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
     document.write(' ' + pokemon.name + ' height: ' + pokemon.height);
         if (pokemon.height > 2.0) {
           document.write('Wow that\'s big! ');
         }
   });
-
-// document.write(pokemonRepository.getAll());
