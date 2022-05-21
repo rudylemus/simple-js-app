@@ -1,0 +1,21 @@
+.pokemon-list-button {
+  background-color: #4caf50;
+  border-radius: 1em;
+  padding: 20px 32px;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: crosshair;
+
+}
+
+.pokemon-list {
+  list-style-type: none;
+
+}
+
+.main-title {
+
+}
