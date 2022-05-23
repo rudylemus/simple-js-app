@@ -32,13 +32,14 @@ let pokemonRepository = (function() {
   }
   //promise function
   function loadList() {
-    return fetch(apiUrl).then(function (response) {
+    return fetch(apiUrl)
+    .then(function (response) {
       return response.json();
-    }). then(function (json) {
+    }) .then(function (json) {
       json.results.forEach(function (item) { //run foreach loop
-        let pokemon = {
+        var pokemon = {
           name: item.name,
-          detailUrl: item.url
+          detailsUrl: item.url,
         };
         add(pokemon);
       }); //catch if errors
@@ -48,15 +49,18 @@ let pokemonRepository = (function() {
   }
 
 
-  function loadDetails(item){
-    let url = item.detailsUrl;
-    return fetch(apiUrl).then(function (response) {
+  function loadDetails(item) {
+    var url = item.detailsUrl;
+    return fetch(url)
+    .then(function (response) {
       return response.json();
-    }). then(function (details) {
+    })
+    .then(function (details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
-    }). catch(function (e) { //catch if errors
+      item.types = Object.keys(details.types);
+    })
+    .catch(function (e) { //catch if errors
       console.error(e);
     });
   }
