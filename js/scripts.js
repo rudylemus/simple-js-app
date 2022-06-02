@@ -6,7 +6,7 @@ let pokemonRepository = (function() {
 
 
   function add(pokemon) {
-    (pokemon.name && pokemon.detailsUrl) {
+    if (pokemon.name && pokemon.detailsUrl) {
         pokemonList.push(pokemon);
       } else {
         console.log('Pokemon is not correct!');
@@ -28,7 +28,7 @@ let pokemonRepository = (function() {
       event.target.blur();
     });
 
-    button.classList.add('btn', 'btn-block', 'btn-outline-primary');
+    button.classList.add('btn', 'btn-block', 'btn-success');
     button.classList.add('m-1', 'bg-blue', 'text-capitalize');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '.modal');
@@ -57,14 +57,14 @@ let pokemonRepository = (function() {
     let pokemonName = $(`<h1>${pokemon.name}</h1>`);
     let pokemonHeight = $(`<p> Height : ${pokemon.height} </p>`);
     let pokemonWeight = $(`<p> Weight : ${pokemon.weight} </p>`);
-    let pokemonImage = $(`<img class="modal-img" src="${pokemon.imageUrl}" alt="Picture of ${pokemon.name}" style="width: 50%">`);
+    let pokemonImage = $(`<img class="modal-img mx-auto" src="${pokemon.imageUrl}" alt="Picture of ${pokemon.name}" style="width: 50%">`);
     let pokemonTypes = $(`<p> Type : ${pokemon.types.join(', ')}</p>`);
 
 
     modalTitle.append(pokemonName);
+    modalBody.append(pokemonImage);
     modalBody.append(pokemonHeight);
     modalBody.append(pokemonWeight);
-    modalBody.append(pokemonImage);
     modalBody.append(pokemonTypes);
 
   }
@@ -92,7 +92,7 @@ let pokemonRepository = (function() {
       .then((res) => res.json())
       .then((details) => {
         item.weight = details.weight;
-        item.imageUrl = details.sprites.front_default;
+        item.imageUrl = details.sprites.other.dream_world.front_default;
         item.height = details.height;
         let types = [];
         details.types.forEach((item) => types.push(item.type.name));
