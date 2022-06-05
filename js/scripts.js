@@ -1,13 +1,13 @@
 //placed array in IIFE
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function add(pokemon) {
     if (pokemon.name && pokemon.detailsUrl) {
       pokemonList.push(pokemon);
     } else {
-      console.log("Pokemon is not correct!");
+      console.log('Pokemon is not correct!');
     }
   }
 
@@ -16,20 +16,20 @@ let pokemonRepository = (function () {
   }
 
   function addListItem(pokemon) {
-    let ul = document.querySelector("ul");
-    let listItem = document.createElement("li");
-    listItem.classList.add("col-sm-8");
-    let button = document.createElement("button");
+    let ul = document.querySelector('ul');
+    let listItem = document.createElement('li');
+    listItem.classList.add('col-sm-8');
+    let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.addEventListener("click", (event) => {
+    button.addEventListener('click', (event) => {
       showDetails(pokemon);
       event.target.blur();
     });
 
-    button.classList.add("btn", "btn-block", "btn-success");
-    button.classList.add("m-1", "bg-blue", "text-capitalize");
-    button.setAttribute("data-toggle", "modal");
-    button.setAttribute("data-target", ".modal");
+    button.classList.add('btn', 'btn-block', 'btn-success');
+    button.classList.add('m-1', 'bg-blue', 'text-capitalize');
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '.modal');
 
     listItem.appendChild(button);
     ul.appendChild(listItem);
@@ -43,8 +43,8 @@ let pokemonRepository = (function () {
 
   function showModal(pokemon) {
     //assign attributes to div classes
-    let modalBody = $(".modal-body");
-    let modalTitle = $(".modal-title");
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
     //clear modal content so it doesnt continue to add
     modalTitle.empty();
     modalBody.empty();
@@ -55,7 +55,7 @@ let pokemonRepository = (function () {
     let pokemonImage = $(
       `<img class="modal-img mx-auto" src="${pokemon.imageUrl}" alt="Picture of ${pokemon.name}" style="width: 50%">`
     );
-    let pokemonTypes = $(`<p> Type : ${pokemon.types.join(", ")}</p>`);
+    let pokemonTypes = $(`<p> Type : ${pokemon.types.join(', ')}</p>`);
 
     modalTitle.append(pokemonName);
     modalBody.append(pokemonImage);
